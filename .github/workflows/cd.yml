@@ -1,0 +1,34 @@
+name: cd-docker
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
+
+env:
+  IMAGE_NAME: eessi_jupyterlab
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Get tag name
+        id: get_tag_name
+        run: echo "TAG_NAME=$(echo ${{ github.ref_name }} | cut -c2- )" >> $GITHUB_OUTPUT
+
+      - name: Build and publish image
+        uses: whoan/docker-build-with-cache-action@v5
+        with:
+          image_name: ${{ env.IMAGE_NAME }}
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          image_tag: ${{ steps.get_tag_name.outputs.TAG_NAME }}
+          registry: ghcr.io
+          dockerfile: ./Dockerfile
+
