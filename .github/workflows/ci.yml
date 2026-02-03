@@ -27,7 +27,7 @@ jobs:
 
       - name: Run tests
         run: |
-          docker run --rm -d $IMAGE_NAME --privileged --name test_container
+          docker run --rm -d --privileged --name test_container $IMAGE_NAME
           # Wait for container to be running without deadlocking the CI
           CNT=0
           while [ $CNT -lt 10 ]; do
