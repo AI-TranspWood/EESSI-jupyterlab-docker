@@ -1,0 +1,42 @@
+name: ci-docker
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "eessi/**"
+      - "Dockerfile"
+      - ".github/workflows/ci.yml"
+      - "entrypoint.sh"
+  pull_request:
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: eessi_jupyterlab
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Build image
+        run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
+
+      - name: Run tests
+        run: |
+          docker run --rm -d $IMAGE_NAME --privileged --name test_container
+          # Wait for container to be running without deadlocking the CI
+          CNT=0
+          while [ $CNT -lt 10 ]; do
+            sleep 6
+            if docker inspect -f '{{.State.Running}}' test_container | grep true; then
+              break
+            fi
+            CNT=$((CNT+1))
+          done
+          # Check that CVMFS is mounted and contains expected directory
+          docker exec test_container bash -c "ls /cvmfs/software.eessi.io" | grep version
+          docker stop test_container
