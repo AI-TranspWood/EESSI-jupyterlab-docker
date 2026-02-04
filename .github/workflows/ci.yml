@@ -13,7 +13,8 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: eessi_jupyterlab
+  # IMAGE_NAME: eessi_jupyterlab
+  TEST_TAG: eessi_jupyterlab:ci-latest
 
 jobs:
   build:
@@ -22,12 +23,39 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Build image
-        run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
+      # - name: Build image
+      #   run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      - name: Run tests
+      # https://docs.docker.com/build/ci/github-actions/cache/#local-cache
+      - name: Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          load: true
+          push: false
+          tags: ${{ env.TEST_TAG }}
+          # context: .
+          cache-from: type=local,src=${{ runner.temp }}/.buildx-cache
+          cache-to: type=local,dest=${{ runner.temp }}/.buildx-cache-new,mode=max
+          
+      - name: Move cache
         run: |
-          docker run --rm -d --privileged --name test_container $IMAGE_NAME
+          rm -rf ${{ runner.temp }}/.buildx-cache
+          mv ${{ runner.temp }}/.buildx-cache-new ${{ runner.temp }}/.buildx-cache
+
+      - name: Verify CVMFS mount in container
+        run: |
+          docker image ls
+          docker run --rm -d --privileged --name test_container ${{ env.TEST_TAG }}
           # Wait for container to be running without deadlocking the CI
           CNT=0
           while [ $CNT -lt 10 ]; do
