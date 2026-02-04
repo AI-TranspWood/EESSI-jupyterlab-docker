@@ -8,19 +8,16 @@ mkdir -p /cvmfs-cache
 chown -R cvmfs:cvmfs /cvmfs-cache
 
 # Ensure Jupyter config directory exists and is owned by the specified user
-rm -fr /home/${USER}/.jupyter
 mkdir -p /home/${USER}/.jupyter/lab/workspaces
 
 BASHRC="/home/${USER}/.bashrc"
 if [ -z "`grep 'module ' ${BASHRC}`" ]; then
     echo 'source /cvmfs/software.eessi.io/versions/2023.06/init/bash' >> ${BASHRC}
-    echo 'module purge' >> ${BASHRC}
-    echo 'module load EESSI-extend' >> ${BASHRC}
+    echo 'module reload' >> ${BASHRC}
     echo 'export PATH="$HOME/.local/bin:$PATH"' >> ${BASHRC}
 fi
 
 chown -R ${USER}:${USER} /home/${USER}
-# chown -R ${USER}:${USER} /home/${USER}/.jupyter/lab/workspaces
 
 # Mount EESSI CVMFS repository
 mkdir -p /cvmfs/software.eessi.io
@@ -48,5 +45,3 @@ jupyter lab \
     --NotebookApp.disable_check_xsrf="True" \
     --ip 0.0.0.0
 ' ${USER}
-
-tail -f /dev/null
