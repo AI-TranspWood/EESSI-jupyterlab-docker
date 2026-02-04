@@ -8,18 +8,8 @@ RUN apt update && \
     apt update && \
     apt install -y cvmfs
 
-# Needed for mpirun to not give PLM related errors with the default configurations
 RUN apt install -y openssh-client
-# RUN apt install -y python3 python3-venv python3-pip
 RUN rm -rf /var/lib/apt/lists/*
-
-# RUN python3 -m venv /opt/jupyter-env
-# RUN /opt/jupyter-env/bin/pip install \
-#     jupyterlab \
-#     jupyter_app_launcher \
-#     jupyterlmod
-
-# RUN chown -R 1000:1000 /opt/jupyter-env
 
 RUN mkdir -p /etc/cvmfs/keys/eessi.io
 COPY eessi/software.eessi.io.conf /etc/cvmfs/config.d/
