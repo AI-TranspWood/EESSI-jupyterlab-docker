@@ -13,7 +13,6 @@ on:
   workflow_dispatch:
 
 env:
-  # IMAGE_NAME: eessi_jupyterlab
   TEST_TAG: eessi_jupyterlab:ci-latest
 
 jobs:
@@ -23,8 +22,6 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      # - name: Build image
-      #   run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -37,10 +34,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-      - name: Build and push
+      - name: Build image for testing
         uses: docker/build-push-action@v6
         with:
-          load: true
+          # https://docs.docker.com/build/ci/github-actions/test-before-push/
+          load: true  # Make sure image is available for subsequent steps to docker commands
           push: false
           tags: ${{ env.TEST_TAG }}
           # context: .
