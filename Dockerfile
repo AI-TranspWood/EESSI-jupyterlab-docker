@@ -1,5 +1,6 @@
 FROM debian:bookworm-slim
 
+# Install CVMFS and dependencies
 RUN apt update && \
     apt install -y wget lsb-release && \
     wget https://cvmrepo.s3.cern.ch/cvmrepo/apt/cvmfs-release-latest_all.deb && \
@@ -10,16 +11,23 @@ RUN apt update && \
 
 # Needed for mpirun to not give PLM related errors with the default configurations
 RUN apt install -y openssh-client
-# RUN apt install -y python3 python3-venv python3-pip
+# Use native python to create a jupyterlab environment
+RUN apt install -y python3 python3-venv python3-pip
 RUN rm -rf /var/lib/apt/lists/*
 
-# RUN python3 -m venv /opt/jupyter-env
-# RUN /opt/jupyter-env/bin/pip install \
-#     jupyterlab \
-#     jupyter_app_launcher \
-#     jupyterlmod
+RUN python3 -m venv /opt/jupyter-env
+# Fix version of jupyter_core to ensure the aforementioned patch works correctly
+RUN /opt/jupyter-env/bin/pip install \
+    jupyter_core==5.9.1 jupyterlab \
+    jupyter_app_launcher \
+    jupyterlmod
 
-# RUN chown -R 1000:1000 /opt/jupyter-env
+# Apply patch to jupyter-core to allow using EB_ENV_JUPYTER_ROOT to define Jupyter paths and config locations
+RUN wget https://github.com/easybuilders/easybuild-easyconfigs/raw/refs/heads/develop/easybuild/easyconfigs/j/jupyter-server/jupyter-core-5.8.1_fix_jupyter_path.patch
+RUN patch -d /opt/jupyter-env/lib/python3.11/site-packages/ -p1 < jupyter-core-5.8.1_fix_jupyter_path.patch
+RUN rm jupyter-core-5.8.1_fix_jupyter_path.patch
+
+RUN chown -R 1000:1000 /opt/jupyter-env
 
 RUN mkdir -p /etc/cvmfs/keys/eessi.io
 COPY eessi/software.eessi.io.conf /etc/cvmfs/config.d/

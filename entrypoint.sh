@@ -23,9 +23,20 @@ chown -R ${USER}:${USER} /home/${USER}
 mkdir -p /cvmfs/software.eessi.io
 mount -t cvmfs software.eessi.io /cvmfs/software.eessi.io
 
+# Ensure AITW-notebooks directory exists and populate it if empty
+NOTEBOOK_VER="0.1.0"
+NOTEBOOK_DIR="/home/${USER}/AITW-notebooks-v${NOTEBOOK_VER}"
+if [ ! -d "${NOTEBOOK_DIR}" ]; then
+    wget https://github.com/AI-TranspWood/jupyter-notebooks/archive/refs/tags/v0.1.0.tar.gz
+    tar -xzf v0.1.0.tar.gz
+    rm v0.1.0.tar.gz
+    mv jupyter-notebooks-0.1.0 ${NOTEBOOK_DIR}
+    chown -R ${USER}:${USER} ${NOTEBOOK_DIR}
+fi
+
 
 # Run JupyterLab from EESSI as specified user
-cd /home/${USER}
+cd ${NOTEBOOK_DIR}
 su -c '
 source /cvmfs/software.eessi.io/versions/2023.06/init/bash
 
@@ -36,10 +47,7 @@ export OMPI_MCA_pml=^ucx
 export OMPI_MCA_mtl=^ofi                                      
 export OMPI_MCA_btl_tcp_if_exclude=docker0,127.0.0.0/8 
 
-module load JupyterLab
-module load jupyterlmod/4.0.3-GCCcore-12.3.0
-
-jupyter lab \
+/opt/jupyter-env/bin/jupyter lab \
     --NotebookApp.token="" \
     --NotebookApp.open_browser="False" \
     --NotebookApp.disable_check_xsrf="True" \
