@@ -23,14 +23,12 @@ chown -R ${USER}:${USER} /home/${USER}
 mkdir -p /cvmfs/software.eessi.io
 mount -t cvmfs software.eessi.io /cvmfs/software.eessi.io
 
+source /cvmfs/software.eessi.io/versions/2023.06/init/bash
+
 # Ensure AITW-notebooks directory exists and populate it if empty
-NOTEBOOK_VER="0.1.0"
-NOTEBOOK_DIR="/home/${USER}/AITW-notebooks-v${NOTEBOOK_VER}"
+NOTEBOOK_DIR="/home/${USER}/AITW-notebooks"
 if [ ! -d "${NOTEBOOK_DIR}" ]; then
-    wget https://github.com/AI-TranspWood/jupyter-notebooks/archive/refs/tags/v0.1.0.tar.gz
-    tar -xzf v0.1.0.tar.gz
-    rm v0.1.0.tar.gz
-    mv jupyter-notebooks-0.1.0 ${NOTEBOOK_DIR}
+    git clone https://github.com/AI-TranspWood/jupyter-notebooks.git ${NOTEBOOK_DIR}
     chown -R ${USER}:${USER} ${NOTEBOOK_DIR}
 fi
 
