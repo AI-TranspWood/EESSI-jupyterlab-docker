@@ -22,6 +22,7 @@ RUN /opt/jupyter-env/bin/pip install \
     ipywidgets \
     jupyter_app_launcher \
     jupyterlmod \
+    jupyter-archive \
     voila
 
 # Apply patch to jupyter-core to allow using EB_ENV_JUPYTER_ROOT to define Jupyter paths and config locations
