@@ -19,8 +19,10 @@ RUN python3 -m venv /opt/jupyter-env
 # Fix version of jupyter_core to ensure the aforementioned patch works correctly
 RUN /opt/jupyter-env/bin/pip install \
     jupyter_core==5.9.1 jupyterlab \
+    ipywidgets \
     jupyter_app_launcher \
-    jupyterlmod
+    jupyterlmod \
+    voila
 
 # Apply patch to jupyter-core to allow using EB_ENV_JUPYTER_ROOT to define Jupyter paths and config locations
 RUN wget https://github.com/easybuilders/easybuild-easyconfigs/raw/refs/heads/develop/easybuild/easyconfigs/j/jupyter-server/jupyter-core-5.8.1_fix_jupyter_path.patch
