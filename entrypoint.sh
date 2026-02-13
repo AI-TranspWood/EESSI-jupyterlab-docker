@@ -14,7 +14,7 @@ BASHRC="/home/${USER}/.bashrc"
 if [ -z "`grep 'module ' ${BASHRC}`" ]; then
     echo 'source /cvmfs/software.eessi.io/versions/2023.06/init/bash' >> ${BASHRC}
     echo 'module reload' >> ${BASHRC}
-    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ${BASHRC}
+    echo 'export PATH="/opt/jupyter-env/bin:$HOME/.local/bin:$PATH"' >> ${BASHRC}
 fi
 
 chown -R ${USER}:${USER} /home/${USER}
@@ -40,6 +40,8 @@ cd ${NOTEBOOK_DIR}
 su -c '
 source /cvmfs/software.eessi.io/versions/2023.06/init/bash
 
+export PATH="/opt/jupyter-env/bin:$HOME/.local/bin:$PATH"
+
 export OMP_NUM_THREADS=1                                      
 export OMPI_MCA_osc=^ucx                                      
 export OMPI_MCA_btl=^openib,ofi                               
@@ -47,7 +49,7 @@ export OMPI_MCA_pml=^ucx
 export OMPI_MCA_mtl=^ofi                                      
 export OMPI_MCA_btl_tcp_if_exclude=docker0,127.0.0.0/8 
 
-/opt/jupyter-env/bin/jupyter lab \
+jupyter lab \
     --NotebookApp.token="" \
     --NotebookApp.open_browser="False" \
     --NotebookApp.disable_check_xsrf="True" \
