@@ -51,5 +51,7 @@ jupyter lab \
     --NotebookApp.token="" \
     --NotebookApp.open_browser="False" \
     --NotebookApp.disable_check_xsrf="True" \
+    --MappingKernelManager.cull_idle_timeout=120 \
+    --MappingKernelManager.cull_interval=15 \
     --ip 0.0.0.0
 ' ${USER}
