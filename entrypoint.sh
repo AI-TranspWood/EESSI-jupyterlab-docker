@@ -9,6 +9,13 @@ chown -R cvmfs:cvmfs /cvmfs-cache
 
 # Ensure Jupyter config directory exists and is owned by the specified user
 mkdir -p /home/${USER}/.jupyter/lab/workspaces
+mkdir -p /home/${USER}/.jupyter/lab/user-settings/@jupyterlab/docmanager-extension
+cat > /home/${USER}/.jupyter/lab/user-settings/@jupyterlab/docmanager-extension/plugin.jupyterlab-settings << EOF
+{
+  "defaultViewers": {
+    "json": "Editor"
+}
+EOF
 
 BASHRC="/home/${USER}/.bashrc"
 if [ -z "`grep 'module ' ${BASHRC}`" ]; then
