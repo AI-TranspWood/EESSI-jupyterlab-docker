@@ -56,7 +56,6 @@ export OMPI_MCA_mtl=^ofi
 export OMPI_MCA_btl_tcp_if_exclude=docker0,127.0.0.0/8 
 
 jupyter lab \
-    --NotebookApp.token="" \
     --NotebookApp.open_browser="False" \
     --NotebookApp.disable_check_xsrf="True" \
     --MappingKernelManager.cull_idle_timeout=120 \
