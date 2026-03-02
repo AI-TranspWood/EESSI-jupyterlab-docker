@@ -58,6 +58,7 @@ export OMPI_MCA_btl_tcp_if_exclude=docker0,127.0.0.0/8
 jupyter lab \
     --NotebookApp.open_browser="False" \
     --NotebookApp.disable_check_xsrf="True" \
+    --LabApp.service_worker=False \
     --MappingKernelManager.cull_idle_timeout=120 \
     --MappingKernelManager.cull_interval=15 \
     --ip 0.0.0.0
