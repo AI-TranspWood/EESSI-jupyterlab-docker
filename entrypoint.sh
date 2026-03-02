@@ -14,6 +14,7 @@ cat > /home/${USER}/.jupyter/lab/user-settings/@jupyterlab/docmanager-extension/
 {
   "defaultViewers": {
     "json": "Editor"
+  }
 }
 EOF
 
