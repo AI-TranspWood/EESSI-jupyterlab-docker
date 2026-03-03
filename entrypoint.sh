@@ -2,6 +2,9 @@
 
 USER=eessi-user
 
+# Clean up any existing port files from previous runs to avoid using stale port numbers before the new one are updated
+rm /home/${USER}/flask_port.env /home/${USER}/jupyter_port.env 2>/dev/null || true
+
 # Needed to avoid `Failed to initialize loader socket` error
 # Needs to be inside the entrypoint script in case of volume mounts
 mkdir -p /cvmfs-cache
@@ -47,6 +50,19 @@ su -c '
 source /cvmfs/software.eessi.io/versions/2023.06/init/bash
 
 export PATH="/opt/jupyter-env/bin:$HOME/.local/bin:$PATH"
+
+count=0
+while [ $count -lt 20 ]; do
+    if [ -f ${HOME}/flask_port.env ] && [ -f ${HOME}/jupyter_port.env ]; then
+        break
+    fi
+    echo "Waiting for port files to be created..."
+    sleep 1
+done
+export FLASK_PORT_EXT=`cat ${HOME}/flask_port.env`
+export JUPYTER_PORT_EXT=`cat ${HOME}/jupyter_port.env`
+
+envsubst '\''$FLASK_PORT_EXT $JUPYTER_PORT_EXT'\'' < jp_app_launcher.yml.tpl > jp_app_launcher.yml
 
 export OMP_NUM_THREADS=1                                      
 export OMPI_MCA_osc=^ucx                                      
