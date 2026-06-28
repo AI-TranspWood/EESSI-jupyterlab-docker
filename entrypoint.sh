@@ -2,6 +2,8 @@
 
 USER=eessi-user
 
+export REQUESTED_EESSI_VERSION=${REQUESTED_EESSI_VERSION:-2023.06}
+
 # Clean up any existing port files from previous runs to avoid using stale port numbers before the new one are updated
 rm /home/${USER}/flask_port.env /home/${USER}/jupyter_port.env 2>/dev/null || true
 
@@ -23,7 +25,10 @@ EOF
 
 BASHRC="/home/${USER}/.bashrc"
 if [ -z "`grep 'module ' ${BASHRC}`" ]; then
-    echo 'source /cvmfs/software.eessi.io/versions/2023.06/init/bash' >> ${BASHRC}
+    echo -e '\n# EESSI CVMFS module initialization' >> ${BASHRC}
+    echo 'export EESSI_NO_MODULE_PURGE_ON_INIT=1' >> ${BASHRC}
+    echo 'export EESSI_DEFAULT_MODULES_APPEND="$LOADEDMODULES"' >> ${BASHRC}
+    echo "source /cvmfs/software.eessi.io/versions/${REQUESTED_EESSI_VERSION}/init/lmod/bash" >> ${BASHRC}
     echo 'module reload' >> ${BASHRC}
     echo 'export PATH="/opt/jupyter-env/bin:$HOME/.local/bin:$PATH"' >> ${BASHRC}
 fi
@@ -34,7 +39,7 @@ chown -R ${USER}:${USER} /home/${USER}
 mkdir -p /cvmfs/software.eessi.io
 mount -t cvmfs software.eessi.io /cvmfs/software.eessi.io
 
-source /cvmfs/software.eessi.io/versions/2023.06/init/bash
+source /cvmfs/software.eessi.io/versions/${REQUESTED_EESSI_VERSION}/init/lmod/bash
 
 # Ensure AITW-notebooks directory exists and populate it if empty
 NOTEBOOK_DIR="/home/${USER}/AITW-notebooks"
@@ -47,7 +52,7 @@ fi
 # Run JupyterLab from EESSI as specified user
 cd ${NOTEBOOK_DIR}
 su -c '
-source /cvmfs/software.eessi.io/versions/2023.06/init/bash
+source /cvmfs/software.eessi.io/versions/${REQUESTED_EESSI_VERSION}/init/lmod/bash
 
 export PATH="/opt/jupyter-env/bin:$HOME/.local/bin:$PATH"
 
