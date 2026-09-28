@@ -14,8 +14,7 @@ USER 1000:1000
 
 RUN virtualenv /opt/jupyter-env
 
-RUN mkdir -p /pip_cache
-RUN --mount=type=cache,target=/pip_cache /opt/jupyter-env/bin/pip install --cache-dir \
+RUN --mount=type=cache,target=/pip_cache /opt/jupyter-env/bin/pip install --cache-dir /pip_cache \
     jupyter_core==5.9.1 jupyterlab \
     ipywidgets \
     jupyter_app_launcher \
