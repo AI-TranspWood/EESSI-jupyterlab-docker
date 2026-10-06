@@ -69,6 +69,8 @@ export JUPYTER_PORT_EXT=`cat ${HOME}/jupyter_port.env`
 
 envsubst '\''$FLASK_PORT_EXT $JUPYTER_PORT_EXT'\'' < jp_app_launcher.yml.tpl > jp_app_launcher.yml
 
+export JUPYTER_PATH="/eessi_kernels:$JUPYTER_PATH"
+
 export OMP_NUM_THREADS=1                                      
 export OMPI_MCA_osc=^ucx                                      
 export OMPI_MCA_btl=^openib,ofi                               
@@ -77,7 +79,6 @@ export OMPI_MCA_mtl=^ofi
 export OMPI_MCA_btl_tcp_if_exclude=docker0,127.0.0.0/8 
 
 jupyter lab \
-    --ServerApp.kernel_spec_manager_class=easybuild_jupyter_kernels.kernelspec.EBKernelSpecManager \
     --NotebookApp.open_browser="False" \
     --NotebookApp.disable_check_xsrf="True" \
     --MappingKernelManager.cull_idle_timeout=120 \

@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/Python/3.14.2-GCCcore-15.2.0/bin/python",
+    "-m",
+    "ipykernel_launcher",
+    "-f",
+    "{connection_file}"
+  ],
+  "env": {
+    "PATH": "/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/jupyter-server/2.19.0-GCCcore-15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/ZeroMQ/4.3.5-GCCcore-15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/Perl/5.42.0-GCCcore-15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/IPython/9.14.0-GCCcore-15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/Python-bundle-PyPI/2026.04-GCCcore-15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/watchfiles/1.1.1-GCCcore-15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/Pygments/2.20.0-GCCcore-15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/coverage/7.13.5-GCCcore-15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/virtualenv/21.3.0-GCCcore-15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/Python/3.14.2-GCCcore-15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/zstd/1.5.7-GCCcore-15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/lz4/1.10.0-GCCcore-15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/gzip/1.14-GCCcore-15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/OpenSSL/3/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/SQLite/3.51.1-GCCcore-15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/Tcl/9.0.3-GCCcore-15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/GCCcore/15.2.0/bin:/cvmfs/software.eessi.io/versions/2026.06/compat/linux/x86_64/usr/bin:/cvmfs/software.eessi.io/versions/2026.06/compat/linux/x86_64/bin",
+    "LD_LIBRARY_PATH": "",
+    "PYTHONPATH": "",
+    "EBPYTHONPREFIXES": "/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/jupyter-server/2.19.0-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/tornado/6.5.6-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/PyZMQ/27.1.0-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/IPython/9.14.0-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/prompt-toolkit/3.0.52-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/jedi/0.20.0-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/Python-bundle-PyPI/2026.04-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/rpds-py/0.30.0-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/PyYAML/6.0.3-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/BeautifulSoup/4.14.3-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/watchfiles/1.1.1-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/Pygments/2.20.0-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/tibs/0.5.7-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/coverage/7.13.5-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/psutil/7.2.1-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/virtualenv/21.3.0-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/cryptography/47.0.0-GCCcore-15.2.0:/cvmfs/software.eessi.io/versions/2026.06/software/linux/x86_64/intel/haswell/software/cffi/2.0.0-GCCcore-15.2.0:",
+    "JULIA_DEPOT_PATH": "",
+    "JULIA_LOAD_PATH": "",
+    "EBJULIA_DEPOT_PATH": "",
+    "EBJULIA_LOAD_PATH": "",
+    "R_LIBS_SITE": ""
+  },
+  "display_name": "EESSI/2026.06 -  Python (3.14.2)",
+  "language": "python",
+  "interrupt_mode": "signal",
+  "metadata": {},
+  "kernel_protocol_version": ""
+}

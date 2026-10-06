@@ -20,8 +20,7 @@ RUN --mount=type=cache,target=/pip_cache /opt/jupyter-env/bin/pip install --cach
     jupyter_app_launcher \
     jupyterlmod \
     jupyter-archive \
-    voila \
-    git+https://github.com/Crivella/easybuild_jupyter_kernels
+    voila
 
 WORKDIR /tmp
 RUN wget https://github.com/easybuilders/easybuild-easyconfigs/raw/refs/heads/develop/easybuild/easyconfigs/j/jupyter-server/jupyter-core-5.8.1_fix_jupyter_path.patch
@@ -55,5 +54,8 @@ RUN useradd -u 1000 -g 1000 -m -s /bin/bash eessi-user
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
+
+RUN mkdir -p /eessi_kernels
+COPY EESSI-kernels/ /eessi_kernels/kernels
 
 ENTRYPOINT ["/entrypoint.sh"]
