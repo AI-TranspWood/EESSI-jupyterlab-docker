@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/cling-kernel/1.2-GCCcore-14.3.0/bin/jupyter-cling-kernel",
+    "-f",
+    "{connection_file}",
+    "--std=c++17"
+  ],
+  "env": {
+    "PATH": "/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/cling-kernel/1.2-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/jupyter-server/2.17.0-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/IPython/9.4.0-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/libxslt/1.1.43-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/libxml2/2.14.3-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/ZeroMQ/4.3.5-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/Perl/5.40.2-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/Python-bundle-PyPI/2025.07-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/virtualenv/20.32.0-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/Python/3.13.5-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/OpenSSL/3/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/SQLite/3.50.1-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/Tcl/9.0.1-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/Cling/1.2-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/zstd/1.5.7-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/lz4/1.10.0-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/gzip/1.14-GCCcore-14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/GCCcore/14.3.0/bin:/cvmfs/software.eessi.io/versions/2025.06/compat/linux/x86_64/usr/bin:/cvmfs/software.eessi.io/versions/2025.06/compat/linux/x86_64/bin",
+    "LD_LIBRARY_PATH": "",
+    "PYTHONPATH": "/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/cling-kernel/1.2-GCCcore-14.3.0/lib/python3.13/site-packages",
+    "EBPYTHONPREFIXES": "/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/jupyter-server/2.17.0-GCCcore-14.3.0:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/BeautifulSoup/4.14.2-GCCcore-14.3.0:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/tornado/6.5.1-GCCcore-14.3.0:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/PyZMQ/27.1.0-GCCcore-14.3.0:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/PyYAML/6.0.2-GCCcore-14.3.0:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/IPython/9.4.0-GCCcore-14.3.0:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/jedi/0.19.2-GCCcore-14.3.0:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/lxml/6.0.0-GCCcore-14.3.0:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/Python-bundle-PyPI/2025.07-GCCcore-14.3.0:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/virtualenv/20.32.0-GCCcore-14.3.0:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/cryptography/45.0.5-GCCcore-14.3.0:/cvmfs/software.eessi.io/versions/2025.06/software/linux/x86_64/intel/skylake_avx512/software/cffi/1.17.1-GCCcore-14.3.0:",
+    "JULIA_DEPOT_PATH": "",
+    "JULIA_LOAD_PATH": "",
+    "EBJULIA_DEPOT_PATH": "",
+    "EBJULIA_LOAD_PATH": "",
+    "R_LIBS_SITE": ""
+  },
+  "display_name": "EESSI/2025.06 - C++17 (Cling) (1.2)",
+  "language": "C++",
+  "interrupt_mode": "signal",
+  "metadata": {},
+  "kernel_protocol_version": ""
+}

@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/Python/3.11.5-GCCcore-13.2.0/bin/python",
+    "-m",
+    "ipykernel_launcher",
+    "-f",
+    "{connection_file}"
+  ],
+  "env": {
+    "PATH": "/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/jupyter-server/2.14.0-GCCcore-13.2.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/IPython/8.17.2-GCCcore-13.2.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/libxslt/1.1.38-GCCcore-13.2.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/libxml2/2.11.5-GCCcore-13.2.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/ZeroMQ/4.3.5-GCCcore-13.2.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/Python-bundle-PyPI/2023.10-GCCcore-13.2.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/virtualenv/20.24.6-GCCcore-13.2.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/Python/3.11.5-GCCcore-13.2.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/OpenSSL/1.1/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/SQLite/3.43.1-GCCcore-13.2.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/Tcl/8.6.13-GCCcore-13.2.0/bin:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/GCCcore/13.2.0/bin:/cvmfs/software.eessi.io/versions/2023.06/compat/linux/aarch64/bin:/cvmfs/software.eessi.io/versions/2023.06/compat/linux/aarch64/usr/bin",
+    "LD_LIBRARY_PATH": "",
+    "PYTHONPATH": "/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/jupyter-server/2.14.0-GCCcore-13.2.0/lib/python3.11/site-packages:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/jupyter_packaging/0.12.3-GCCcore-13.2.0/lib/python3.11/site-packages:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/deprecation/2.1.0-GCCcore-13.2.0/lib/python3.11/site-packages:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/ipywidgets/8.1.2-GCCcore-13.2.0/lib/python3.11/site-packages:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/debugpy/1.8.1-GCCcore-13.2.0/lib/python3.11/site-packages:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/BeautifulSoup/4.12.2-GCCcore-13.2.0/lib/python3.11/site-packages:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/tornado/6.4-GCCcore-13.2.0/lib/python3.11/site-packages:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/PyZMQ/25.1.2-GCCcore-13.2.0/lib/python3.11/site-packages:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/PyYAML/6.0.1-GCCcore-13.2.0/lib/python3.11/site-packages:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/IPython/8.17.2-GCCcore-13.2.0/lib/python3.11/site-packages:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/jedi/0.19.1-GCCcore-13.2.0/lib/python3.11/site-packages:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/lxml/4.9.3-GCCcore-13.2.0/lib/python3.11/site-packages:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/Python-bundle-PyPI/2023.10-GCCcore-13.2.0/lib/python3.11/site-packages:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/virtualenv/20.24.6-GCCcore-13.2.0/lib/python3.11/site-packages:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/cryptography/41.0.5-GCCcore-13.2.0/lib/python3.11/site-packages:/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/cffi/1.15.1-GCCcore-13.2.0/lib/python3.11/site-packages",
+    "EBPYTHONPREFIXES": "/cvmfs/software.eessi.io/versions/2023.06/software/linux/aarch64/a64fx/software/Python-bundle-PyPI/2023.10-GCCcore-13.2.0:",
+    "JULIA_DEPOT_PATH": "",
+    "JULIA_LOAD_PATH": "",
+    "EBJULIA_DEPOT_PATH": "",
+    "EBJULIA_LOAD_PATH": "",
+    "R_LIBS_SITE": ""
+  },
+  "display_name": "EESSI/2023.06 - Python (3.11.5)",
+  "language": "python",
+  "interrupt_mode": "signal",
+  "metadata": {},
+  "kernel_protocol_version": ""
+}
