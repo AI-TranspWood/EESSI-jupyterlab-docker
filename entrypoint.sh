@@ -4,9 +4,6 @@ USER=eessi-user
 
 export REQUESTED_EESSI_VERSION=${REQUESTED_EESSI_VERSION:-2023.06}
 
-# Clean up any existing port files from previous runs to avoid using stale port numbers before the new one are updated
-rm /home/${USER}/flask_port.env /home/${USER}/jupyter_port.env 2>/dev/null || true
-
 # Needed to avoid `Failed to initialize loader socket` error
 # Needs to be inside the entrypoint script in case of volume mounts
 mkdir -p /cvmfs-cache
@@ -55,24 +52,6 @@ source /cvmfs/software.eessi.io/versions/${REQUESTED_EESSI_VERSION}/init/lmod/ba
 export JUPYTER_PATH="/eessi_kernels/$EESSI_SOFTWARE_SUBDIR:$JUPYTER_PATH"
 
 export PATH="/opt/jupyter-env/bin:$HOME/.local/bin:$PATH"
-
-count=0
-LIMIT=20
-while [ $count -lt $LIMIT ]; do
-    if [ -f ${HOME}/flask_port.env ] && [ -f ${HOME}/jupyter_port.env ]; then
-        break
-    fi
-    echo "Waiting for port files to be created..."
-    sleep 1
-    count=$((count + 1))
-    if [ $count -eq $LIMIT ]; then
-        echo "Timeout waiting for port files to be created. Some services may not be available."
-    fi
-done
-export FLASK_PORT_EXT=`cat ${HOME}/flask_port.env`
-export JUPYTER_PORT_EXT=`cat ${HOME}/jupyter_port.env`
-
-envsubst '\''$FLASK_PORT_EXT $JUPYTER_PORT_EXT'\'' < jp_app_launcher.yml.tpl > jp_app_launcher.yml
 
 # It is important to go into JupyterLab without any EESSI version loaded.
 # This allows to go into a notebook and run `module purge` without removing the compat layer paths from PATH and
