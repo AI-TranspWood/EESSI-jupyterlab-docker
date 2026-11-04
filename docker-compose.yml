@@ -3,7 +3,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: AITW_eessi_jupyter_embedded_dd_vm_TEST
     restart: unless-stopped
     volumes:
       - cvmfs-cache:/cvmfs-cache
