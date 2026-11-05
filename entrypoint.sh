@@ -41,8 +41,8 @@ source /cvmfs/software.eessi.io/versions/${REQUESTED_EESSI_VERSION}/init/lmod/ba
 NOTEBOOK_DIR="/home/${USER}/AITW-notebooks"
 if [ ! -d "${NOTEBOOK_DIR}" ]; then
     git clone https://github.com/AI-TranspWood/jupyter-notebooks.git ${NOTEBOOK_DIR}
-    chown -R ${USER}:${USER} ${NOTEBOOK_DIR}
 fi
+chown -R ${USER}:${USER} ${NOTEBOOK_DIR}
 
 
 # Run JupyterLab from EESSI as specified user
