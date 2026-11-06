@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - "eessi/**"
+      - "EESSI-kernels/**"
       - "Dockerfile"
       - ".github/workflows/ci.yml"
       - "entrypoint.sh"
