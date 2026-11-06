@@ -18,7 +18,6 @@ RUN --mount=type=cache,target=/pip_cache /opt/jupyter-env/bin/pip install --cach
     jupyter_core==5.9.1 jupyterlab \
     ipywidgets \
     jupyter_app_launcher \
-    jupyterlmod \
     jupyter-archive \
     voila
 
@@ -36,12 +35,8 @@ RUN apt update && \
     dpkg -i cvmfs-release-latest_all.deb && \
     rm -f cvmfs-release-latest_all.deb && \
     apt update && \
-    apt install -y cvmfs
-
-# Needed for mpirun to not give PLM related errors with the default configurations
-RUN apt install -y openssh-client
-# RUN apt install -y python3 python3-venv python3-pip git
-RUN rm -rf /var/lib/apt/lists/*
+    apt install -y cvmfs && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY --from=intermediate /opt/jupyter-env /opt/jupyter-env
 
@@ -56,6 +51,6 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 RUN mkdir -p /eessi_kernels
-COPY EESSI-kernels/ /eessi_kernels/kernels
+COPY EESSI-kernels/ /eessi_kernels
 
 ENTRYPOINT ["/entrypoint.sh"]

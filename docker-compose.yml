@@ -1,0 +1,21 @@
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - cvmfs-cache:/cvmfs-cache
+      - jupyter_data:/home/eessi-user
+      # To use a development version of the notebooks, uncomment the following line and replace <PATH_TO_NOTEBOOKS>
+      # with the path to your local notebooks directory
+      # - <PATH_TO_NOTEBOOKS>:/home/eessi-user/AITW-notebooks
+    # Required for CVMFS to be able to mount the filesystem
+    privileged: true
+    ports:
+      - 8888:8888
+      - 5000:5000
+
+volumes:
+  jupyter_data:
+  cvmfs-cache:
