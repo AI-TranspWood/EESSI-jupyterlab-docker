@@ -44,6 +44,9 @@ echo_yellow "Temporary directory for EESSI kernels: ${TMPDIR}"
 source ${STACK_DIR}/versions/${EESSI_VERSIONS[0]}/init/lmod/bash
 module --force purge
 
+num_versions=${#EESSI_VERSIONS[@]}
+version_count=0
+
 for version_dir in "${EESSI_VERSIONS[@]}"; do
     echo "Updating EESSI kernels for version: $version_dir"
     STACK_BASE_DIR="${STACK_DIR}/versions/${version_dir}"
@@ -54,7 +57,7 @@ for version_dir in "${EESSI_VERSIONS[@]}"; do
         arch_subdir=$(realpath --relative-to="${STACK_BASE_DIR}/software/linux" "${archdir}")
         export EESSI_SOFTWARE_SUBDIR_OVERRIDE="${arch_subdir}"
         echo "    -----------------------------------------------------------------------------------------------------------"
-        echo_yellow "    Loading EESSI stack version ${version_dir} for architecture ${EESSI_SOFTWARE_SUBDIR_OVERRIDE}...  ($((++arch_count))/$num_architectures)"
+        echo_yellow "    Loading EESSI stack version ${version_dir} (version ${version_count}/${num_versions}) for architecture ${EESSI_SOFTWARE_SUBDIR_OVERRIDE}...  ($((++arch_count))/$num_architectures)"
         module load EESSI/${version_dir}
         
         ARCH_MODULEPATH="$MODULEPATH"
@@ -101,6 +104,8 @@ for version_dir in "${EESSI_VERSIONS[@]}"; do
             error "    Failed to update the Jupyter kernels for EESSI ${version_dir} - ARCH: ${archdir}. Exit code: ${exit_code}"
         fi
     done
+
+    version_count=$((version_count + 1))
 done
 
 echo_green "All EESSI kernels have been updated successfully. The updated kernels are located in: ${TMPDIR}"
